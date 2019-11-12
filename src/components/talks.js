@@ -23,7 +23,7 @@ const saveTalk = event => {
             $('#addTalksModal').modal('hide')
             btnSubmit.removeAttribute('disabled')
             btnSubmit.innerHTML = `<i class="fa fa-save"></i> Save`
-            
+            loadTalks();
         }).catch(error => {
             console.log(error);
         })
