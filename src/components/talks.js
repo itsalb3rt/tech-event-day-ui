@@ -34,11 +34,11 @@ const saveTalk = event => {
 
 const loadTalks = () => {
     let talkTemplate = `
-    <div class="card border-primary mb-3" style="max-width: 18rem;">
+    <div class="card border-primary mb-3" >
         <div class="card-header">{{SPEAKER}}</div>
         <div class="card-body text-primary">
-            <h3 class="card-title">{{TALKTITLE}}</h3>
-            <h5 class="card-title">{{TIME}}</h5>
+            <h4 class="card-title">{{TALKTITLE}}</h4>
+            <h5 class="card-title"><span class="badge badge-primary py-2 px-4">{{TIME}}</span></h5>
             <p class="card-text">{{TAGS}}</p>
         </div>
     </div>`;
