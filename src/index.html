@@ -23,7 +23,7 @@
 </head>
 
 <body>
-    <div class="container mt-4">
+    <div class="container mt-4" id="mainContianer" style="display: none;">
         <div class="row">
             <div class="col-sm-6">
                 <div class="card" style="width: 18rem;">
@@ -31,18 +31,15 @@
                         <button type="button" class="btn btn-outline-primary" data-toggle="modal"
                             data-target="#addSpeaker"><i class="fa fa-microphone-alt"></i> Add
                             speaker</button>
-                        <button type="button" class="btn btn-outline-primary"><i class="fa fa-comments"></i> Add Talk
+                        <button type="button" class="btn btn-outline-primary" id="addTalkModalBtn"><i
+                                class="fa fa-comments"></i> Add Talk
                         </button>
                     </div>
                 </div>
             </div>
             <div class="col-sm-6">
-                <div class="card" style="width: 18rem;">
-                    <div class="card-body">
-                        <button type="button" class="btn btn-primary">
-                            Launch demo modal
-                        </button>
-                    </div>
+                <div class="card" id="talksContainer">
+                    
                 </div>
             </div>
             <!-- Modal -->
@@ -57,7 +54,7 @@
                             </button>
                         </div>
                         <div class="modal-body">
-                            <form onsubmit="saveSpeaker(event)" action="#">
+                            <form id="saveSpeakerForm" action="#">
                                 <div class="form-group">
                                     <label for="name">Name</label>
                                     <input type="text" class="form-control" id="name" aria-describedby="emailHelp"
@@ -72,7 +69,47 @@
                         </div>
                         <div class="modal-footer">
                             <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
-                            <button type="submit" class="btn btn-primary" id="saveSpeakerBtn"><i class="fa fa-save"></i> Save</button>
+                            <button type="submit" class="btn btn-primary" id="saveSpeakerBtn"><i class="fa fa-save"></i>
+                                Save</button>
+                        </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
+            <!-- create talks modal -->
+            <div class="modal fade" id="addTalksModal" tabindex="-1" role="dialog" aria-labelledby="addTalksModal"
+                aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="addTalksModalLabel">Create Talk</h5>
+                            <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                                <span aria-hidden="true">&times;</span>
+                            </button>
+                        </div>
+                        <div class="modal-body">
+                            <form id="saveTalkForm" action="#">
+                                <div class="form-group">
+                                    <label for="talkName">Name</label>
+                                    <input type="text" class="form-control" id="talkName" aria-describedby="talkName"
+                                        placeholder="Awesome PHP" required>
+                                    <label for="talkTags">Tags</label>
+                                    <input type="text" class="form-control" id="talkTags" aria-describedby="talkTags"
+                                        placeholder="tech, javascript, php the best">
+                                    <div class="form-group">
+                                        <label for="exampleFormControlSelect1">Example select</label>
+                                        <select class="form-control" id="speakers">
+                                        </select>
+                                    </div>
+                                    <label for="talkTime">Time</label>
+                                    <input type="text" class="form-control" id="talkTime" aria-describedby="talkTime"
+                                        placeholder="09:00 AM to 10:00 AM" required>
+                                </div>
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+                            <button type="submit" class="btn btn-primary" id="saveTalkBtn"><i class="fa fa-save"></i>
+                                Save</button>
                         </div>
                         </form>
                     </div>

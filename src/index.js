@@ -1,43 +1,20 @@
-import baseURL from './env'
+import Store from './store/index'
+import speakers from './components/speakers'
+import talks from './components/talks'
 
-const saveSpeaker = event => {
-    event.preventDefault()
+window.store = new Store('http://localhost:3000/api');
 
-    const newSpeaker = {
-        name: document.getElementById('name').value,
-        email: document.getElementById('email').value,
-        github_account: document.getElementById('githubUser').value
-    }
-    const btnSubmit = document.getElementById('saveSpeakerBtn')
+window.onload = () => {
+    speakers.loadSpeakers();
+    talks.loadTalks();
+    
+    document.getElementById('mainContianer').removeAttribute('style');
 
-    btnSubmit.innerHTML = `
-    <div class="spinner-border spinner-border-sm" role="status">
-    <span class="sr-only">Loading...</span>
-  </div>`
-    btnSubmit.setAttribute('disabled', 'true');
+    document.getElementById('saveSpeakerForm').addEventListener('submit', speakers.saveSpeaker);
+    document.getElementById('saveTalkForm').addEventListener('submit',talks.saveTalk);
 
-    setTimeout(() => {
-        btnSubmit.removeAttribute('disabled')
-        btnSubmit.innerHTML = `<i class="fa fa-save"></i> Save`
-
-        const options = {
-            method: 'POST',
-            body: JSON.stringify(newSpeaker), 
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        }
-
-        fetch(`${baseURL}/speakers`,options)
-            .then(function (response) {
-                return response.json();
-            })
-            .then(function (myJson) {
-                $('#addSpeaker').modal('hide')
-                console.log(myJson);
-            });
-
-
-    }, 1000);
-    console.log(newSpeaker)
+    document.getElementById('addTalkModalBtn').addEventListener('click',()=>{
+        speakers.loadSpeakers();
+        $('#addTalksModal').modal('show')
+    })
 }
