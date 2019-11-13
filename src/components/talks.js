@@ -51,10 +51,10 @@ const loadTalks = () => {
 
         if (talks.length > 0) {
             talks.forEach(talk => {
-                resultTemplate += talkTemplate.replace('{{SPEAKER}}',talk.speakerId)
-                .replace('{{TALKTITLE}}',talk.name)
-                .replace('{{TIME}}',talk.time)
-                .replace('{{TAGS}}',talk.tags) 
+                resultTemplate += talkTemplate.replace('{{SPEAKER}}', talk.speaker.name)
+                    .replace('{{TALKTITLE}}', talk.name)
+                    .replace('{{TIME}}', talk.time)
+                    .replace('{{TAGS}}', talk.tags)
             });
             talksContainer.innerHTML = resultTemplate;
         }
@@ -63,4 +63,7 @@ const loadTalks = () => {
     })
 }
 
-export default {saveTalk,loadTalks};
+export default {
+    saveTalk,
+    loadTalks
+};
